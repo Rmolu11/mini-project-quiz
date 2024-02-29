@@ -1,0 +1,43 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#main-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-title{
+    font-size: 45px;
+}
+
+#instructions{
+    padding-top: 20px;
+}
+
+button{
+    color: white;
+    background-color: blueviolet;
+    padding: 10px;
+    border-radius: 20%;
+}
+
+button:hover{
+    
+}
+
+button:after{
+    content: ">";
+    opacity: 0;
+    transition: 0.5s;
+}
+
+button:hover:after{
+    opacity: 1;
+    padding-left: 5px;
+    padding-right: 10px;
+}
