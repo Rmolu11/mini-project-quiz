@@ -4,7 +4,24 @@ header{
     justify-content: space-between;
 }
 
+.hidden{
+    display : none;
+    
+}
+
+#answer-options{
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+}
+
 #main-body{
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+}
+
+#intro-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,11 +40,13 @@ button{
     color: white;
     background-color: blueviolet;
     padding: 10px;
-    border-radius: 20%;
+    border-radius: 10%;
 }
 
 button:hover{
-    
+    cursor: pointer;
+    border-radius: 20%;
+    box-shadow: 0 0.4rem 1.4rem 0 black;
 }
 
 button:after{
@@ -40,4 +59,19 @@ button:hover:after{
     opacity: 1;
     padding-left: 5px;
     padding-right: 10px;
+}
+
+#question-answer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+#answer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
 }
