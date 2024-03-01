@@ -61,6 +61,7 @@ var introPage = document.getElementById("intro-page");
 var timerEl = document.getElementById("timer");
 var answerButtons = document.getElementById("answer-options");
 var resultEl = document.getElementById("results");
+var leaderBoardEl = document.getElementById("leaderboard");    
 var playerScore;
 var timeLeft = 60;
 var TimeId;
@@ -118,12 +119,15 @@ function showQuestion(){
 function chooseAnswer(event){
     var chosenButton = event.target;
     var answers = questions[currentQuestionIndex].answers;
+
     // using the find() method on arrays to return the first element that matches the condition
     var correctAnswer = answers.find(function(answer){ 
         return answer.correct;
     });
 
-    if (chosenButton.innerText === correctAnswer.innerText){
+    var correctAnswerString = JSON.stringify(correctAnswer);
+
+    if (chosenButton.innerText === correctAnswerString){
         playerScore += 10;
     } else {
         timeLeft -= 10;
@@ -135,6 +139,19 @@ function chooseAnswer(event){
     }else {
         stopQuiz();
     }
+}
+
+function updateLeaderboard(scores){
+    leaderBoardEl.innerHTML = "";
+
+    for(var i = 0; i < scores.length; i++){
+        var score = scores[i];
+        var scoreEntry = document.createElement("div");
+        scoreEntry.classList.add("leaderboard-entry");
+        scoreEntry.textContent = (i+1) + ". " + score.initials + ". " + score.score;
+        leaderBoardEl.appendChild(scoreEntry);
+    }
+    leaderBoardEl.classList.remove("hidden");
 }
 
 function stopQuiz(){
@@ -151,6 +168,19 @@ function stopQuiz(){
         var userInitials = userInitialsInput.value;
         //check that the user enters their initials
         if (userInitials){
+            var newScore = {
+                initials: userInitials,
+                score: playerScore,
+            }
+            // create an array for leaderboards. If its null, it will return and empty array
+            var scores = JSON.parse(localStorage.getItem("leaderBoardScores")) || [];
+
+            // since leaderboard is an array, push() method works
+            scores.push(newScore);
+            localStorage.setItem("leaderboardScores", JSON.stringify(scores));
+
+            updateLeaderboard(scores);
+
             document.getElementById("results-heading").innerHTML = "Good Job, " + userInitials + " you're all done! Your final score is: " + playerScore;
             resultEl.classList.remove("hidden");
         } else {
