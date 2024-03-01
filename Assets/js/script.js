@@ -56,6 +56,8 @@ var questions = [
 var questionEl = document.getElementById("question-answer");
 var answerEl = document.getElementById("btn-answer");
 var introPage = document.getElementById("intro-page");
+var timerEl = document.getElementById("timer");
+var timeLeft = 60;
 
 
 var currentQuestionIndex = 0; // questions are stored in array. It's best to start at 0
@@ -76,6 +78,15 @@ function startQuiz(){
 
 
 function startTimer(){
+    timerEl.textContent = "Timer: "+ timeLeft;
+    var timerId = setInterval(function(){
+        timeLeft--;
+        timerEl.textContent = "Timer: "+ timeLeft;
+        if (timeLeft <= 0){
+            clearInterval(timerId);
+            stopQuiz();
+        }
+    },1000);
 
 }
 
