@@ -64,14 +64,14 @@ var resultEl = document.getElementById("results");
 var leaderBoardEl = document.getElementById("leaderboard");    
 var playerScore;
 var timeLeft = 60;
-var TimeId;
+var timerId;
 
 startButton.addEventListener("click", startQuiz);
 
 var currentQuestionIndex = 0; // questions are stored in array. It's best to start at 0
 
 function startQuiz(){
-    var playerScore = 0; // initiallize score to 0
+    playerScore = 0; // initiallize score to 0
     currentQuestionIndex = 0
     questionContainer.classList.remove("hidden");
     introPage.classList.add("hidden");
@@ -125,10 +125,12 @@ function chooseAnswer(event){
         return answer.correct;
     });
 
-    var correctAnswerString = JSON.stringify(correctAnswer);
+    // var correctAnswerString = JSON.stringify(correctAnswer);
 
+    // if (chosenButton.innerText === correctAnswerString){
+    //     playerScore += 10;
     if (chosenButton.innerText === correctAnswerString){
-        playerScore += 10;
+            playerScore += 10;
     } else {
         timeLeft -= 10;
     }
@@ -177,7 +179,7 @@ function stopQuiz(){
 
             // since leaderboard is an array, push() method works
             scores.push(newScore);
-            localStorage.setItem("leaderboardScores", JSON.stringify(scores));
+            localStorage.setItem("leaderBoardScores", JSON.stringify(scores));
 
             updateLeaderboard(scores);
 
