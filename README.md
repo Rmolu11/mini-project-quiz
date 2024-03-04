@@ -1,4 +1,4 @@
-# Quiz Project
+# Quiz Project (https://rmolu11.github.io/mini-project-quiz/)
 
 This is a simple quiz application built using HTML, CSS and Javascript. It allows users to answer multiple-choice questions and provide feedback on their answers.
 
