@@ -1,53 +1,32 @@
-// creating an object called questions which contains an array of question objects
-// each question contains an array of answers
-//each answer object has a text property and a correct property
+// creating an object called questions which contains an array of question objects with properties: question, answer and solution
+// each answer array is a string of choices
+//each question has a property called solution displaying the right answer 
+
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
-        //array of answer objects containint text property and boolean correctness property
-        answers: [
-            { text: "strings", correct: false },
-            { text: "booleans", correct: false },
-            { text: "alert", correct: true },
-            { text: "numbers", correct: false }
-
-        ]
+        answers: ["strings", "booleans", "alert", "numbers"],
+        solution: "alert" 
     },
     {
         question: "The condition in an if/else statemnt is enclosed within ____.",
-        answers: [
-            { text: "quotes", correct: false },
-            { text: "curly brackets", correct: false },
-            { text: "parentheses", correct: true },
-            { text: "square brackets", correct: false }
-        ]
+        answers: [ "quotes", "curly brackets", "parentheses", "square brackets"],
+        solution: "parentheses" 
     },
     {
         question: "Arays in JavaScript can be used to store ___.",
-        answers: [
-            { text: "numbers and strings", correct: false },
-            { text: "other arrays", correct: false },
-            { text: "booleans", correct: false },
-            { text: "all of the above", correct: true }
-        ]
+        answers: [ "numbers and strings", "other arrays", "booleans", "all of the above"],
+        solution: "all of the above" 
     },
     {
         question: "String values must be enclosed within ___ when being assigned to variables",
-        answers: [
-            { text: "commas", correct: false },
-            { text: "curly brackets", correct: false },
-            { text: "quotes", correct: true },
-            { text: "parentheses", correct: false }
-        ]
+        answers: [ "commas", "curly brackets", "quotes", "parentheses"],
+        solution: "quotes" 
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debbuger is:",
-        answers: [
-            { text: "JavaScript", correct: false },
-            { text: "terminal/bash", correct: false },
-            { text: "for loops", correct: false },
-            { text: "console log", coorrect: true },
-        ]
+        answers: [ "JavaScript", "terminal/bash", "for loops", "console log"],
+        solution: "console log" 
     }
 ];
 
@@ -62,11 +41,13 @@ var timerEl = document.getElementById("timer");
 var answerButtons = document.getElementById("answer-options");
 var resultEl = document.getElementById("results");
 var leaderBoardEl = document.getElementById("leaderboard");    
+var resetButton = document.getElementById("reset-leaderboard");
 var playerScore;
 var timeLeft = 60;
 var timerId;
 
 startButton.addEventListener("click", startQuiz);
+resetButton.addEventListener("click", resetLeaderBoard);
 
 var currentQuestionIndex = 0; // questions are stored in array. It's best to start at 0
 
@@ -101,7 +82,7 @@ function showQuestion(){
     for(var i = 0; i<questions[currentQuestionIndex].answers.length; i++){
         var answerButton = document.createElement("button");
         var answer = questions[currentQuestionIndex].answers[i];
-        answerButton.innerHTML = (i+1)+ "." + answer.text;
+        answerButton.innerHTML = questions[currentQuestionIndex].answers[i];
         answerButton.classList.add("button");
 
         answerButton.addEventListener("click", function(event){
@@ -117,22 +98,23 @@ function showQuestion(){
 }
 
 function chooseAnswer(event){
-    var chosenButton = event.target;
-    var answers = questions[currentQuestionIndex].answers;
+    var chosenButton = event.target.textContent;
+    var answers = questions[currentQuestionIndex].solution;
+    console.log(chosenButton);
+    //using the find() method on arrays to return the first element that matches the condition
+    // var correctAnswer = answers.find(function(answer){ 
+    //     return answer.correct;
+    // });
 
-    // using the find() method on arrays to return the first element that matches the condition
-    var correctAnswer = answers.find(function(answer){ 
-        return answer.correct;
-    });
 
-    // var correctAnswerString = JSON.stringify(correctAnswer);
-
+    if (chosenButton === answers){
+        playerScore += 10;
+        console.log("correct");
     // if (chosenButton.innerText === correctAnswerString){
-    //     playerScore += 10;
-    if (chosenButton.innerText === correctAnswerString){
-            playerScore += 10;
+    //         playerScore += 10;
     } else {
         timeLeft -= 10;
+        console.log("incorrect")
     }
 
     currentQuestionIndex ++;
@@ -154,6 +136,11 @@ function updateLeaderboard(scores){
         leaderBoardEl.appendChild(scoreEntry);
     }
     leaderBoardEl.classList.remove("hidden");
+}
+
+function resetLeaderBoard(){
+    
+    
 }
 
 function stopQuiz(){
@@ -191,3 +178,4 @@ function stopQuiz(){
     }
 
 }
+

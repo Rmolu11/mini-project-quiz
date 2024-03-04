@@ -4,10 +4,7 @@ header{
     justify-content: space-between;
 }
 
-.hidden{
-    display : none;
-    
-}
+
 
 #answer-options{
     display: flex;  
@@ -21,11 +18,16 @@ header{
     align-items: center;
 }
 
-#intro-page{
+.intro-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.hidden{
+    display : none;
+    
 }
 
 #main-title{
