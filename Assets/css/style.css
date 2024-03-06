@@ -5,18 +5,28 @@ header{
 }
 
 
-
 #answer-options{
     display: flex;  
     flex-direction: column;
     align-items: center;
+    padding-top: 30px;
 }
+
 
 #main-body{
     display: flex;  
     flex-direction: column;
     align-items: center;
+    margin-top: 150px;
 }
+
+
+
+#question{
+    font-size: 30px;
+    padding: 20px;
+}
+
 
 .intro-page{
     display: flex;
@@ -25,18 +35,22 @@ header{
     align-items: center;
 }
 
+
 .hidden{
     display : none;
     
 }
 
+
 #main-title{
     font-size: 45px;
 }
 
+
 #instructions{
     padding-top: 20px;
 }
+
 
 button{
     color: white;
@@ -45,11 +59,13 @@ button{
     border-radius: 10%;
 }
 
+
 button:hover{
     cursor: pointer;
     border-radius: 20%;
     box-shadow: 0 0.4rem 1.4rem 0 black;
 }
+
 
 button:after{
     content: ">";
@@ -57,23 +73,24 @@ button:after{
     transition: 0.5s;
 }
 
+
 button:hover:after{
     opacity: 1;
     padding-left: 5px;
     padding-right: 10px;
 }
 
+
 #question-answer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
 }
+
 
 #answer-container{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
 }

@@ -101,17 +101,13 @@ function chooseAnswer(event){
     var chosenButton = event.target.textContent;
     var answers = questions[currentQuestionIndex].solution;
     console.log(chosenButton);
-    //using the find() method on arrays to return the first element that matches the condition
-    // var correctAnswer = answers.find(function(answer){ 
-    //     return answer.correct;
-    // });
+   
 
 
     if (chosenButton === answers){
         playerScore += 10;
         console.log("correct");
-    // if (chosenButton.innerText === correctAnswerString){
-    //         playerScore += 10;
+   
     } else {
         timeLeft -= 10;
         console.log("incorrect")

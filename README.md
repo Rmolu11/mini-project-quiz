@@ -16,8 +16,14 @@ This is a simple quiz application built using HTML, CSS and Javascript. It allow
 
 ## Usage
 1. Open `index.html` in a web browser.
+![alt text](Assets/images/intro.jpg)
+
 2. Start answering the questions.
-3. After answering all questions, view your final score.
+![alt text](Assets/images/questions.jpg)
+
+3. After answering all questions, view your final score and the leaderboard.
+![alt text](Assets/images/leaderboard.jpg)
+
 4. To restart the quiz, refresh the page.
 
 ## Contributing
