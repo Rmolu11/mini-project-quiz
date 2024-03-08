@@ -10,7 +10,7 @@ This is a simple quiz application built using HTML, CSS and Javascript. It allow
 
 ## Installation
 
-1. Clone the repository to your local machine, https://github.com/Rmolu11/mini-project-quiz
+1. Clone the repository to your local machine, https://github.com/ralphmolu/mini-project-quiz
  
 2. Open the project directory in your code editor.
 
